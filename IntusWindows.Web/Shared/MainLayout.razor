@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <main>
+        <MatThemeProvider Theme="@theme">
+            <MatAppBarContainer>
+                <MatAppBar Fixed="true">
+                    <MatAppBarRow>
+                        <MatAppBarSection>
+                            <MatAppBarTitle>INTUS Windows</MatAppBarTitle>
+                        </MatAppBarSection>
+                    </MatAppBarRow>
+                </MatAppBar>
+                <MatAppBarContent>
+                </MatAppBarContent>
+            </MatAppBarContainer>
+
+            <article class="content px-4">
+                @Body
+            </article>
+        </MatThemeProvider>
+    </main>
+</div>
+
+@code
+{
+
+    MatTheme theme = new MatTheme()
+        {
+            Primary = MatThemeColors.Green._500.Value,
+            Secondary = MatThemeColors.Cyan._500.Value
+        };
+}

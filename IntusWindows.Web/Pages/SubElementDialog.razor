@@ -1,0 +1,37 @@
+﻿@using IntusWindows.Common;
+@using IntusWindows.Web.Extentions;
+@inherits SubElementDialogBase
+
+<MatDialog @bind-IsOpen="@SubElementDialogueModel.IsOpen" CanBeClosed=false Class="dialog-container small-dialog">
+    <EditForm Model="SubElementDialogueModel.ModelDTO" OnValidSubmit="@OnSave">
+        <DataAnnotationsValidator />
+        <MatDialogTitle>@SubElementDialogueModel.ActionType Sub element</MatDialogTitle>
+        <MatDialogContent Class="width-500">
+            <div class="margin-top-15">
+                <p>
+                    <label for="SubElementDialogueModel.ModelDTO.ElementType">ElementType</label>
+                    <select @bind="SubElementDialogueModel.ModelDTO.ElementType" class="form-control">
+                        @foreach (var state in ElementTypes)
+                        {
+                            <option value="@state">@state</option>
+                        }
+                    </select>
+                    <ValidationMessage For="@(()=>SubElementDialogueModel.ModelDTO.ElementType)" />
+                </p>
+                <p>
+                    <MatTextField @bind-Value="@SubElementDialogueModel.ModelDTO.Width" Label="Width" FullWidth=true></MatTextField>
+                    <ValidationMessage For="@(() => SubElementDialogueModel.ModelDTO.Width)" />
+                </p>
+                <p>
+                    <MatTextField @bind-Value="@SubElementDialogueModel.ModelDTO.Height" Label="Height" FullWidth=true></MatTextField>
+                 
+                    <ValidationMessage For="@(() => SubElementDialogueModel.ModelDTO.Height)" />
+                </p>
+            </div>
+        </MatDialogContent>
+        <MatDialogActions Class="margin-right-15 margin-bottom-15">
+            <MatButton Type="submit">Add</MatButton>&nbsp;
+            <MatButton OnClick="@OnCancel">Cancel</MatButton>
+        </MatDialogActions>
+    </EditForm>
+</MatDialog>

@@ -1,0 +1,47 @@
+﻿@page "/"
+@inherits OrderBase
+
+<div class="mat-layout-grid">
+    <div class="mat-layout-grid-inner">
+        <div class="mat-layout-grid-cell mat-layout-grid-cell-span-10">
+            @if (Orders == null)
+            {
+                <h3>Loading orders...</h3>
+            }
+            else
+            {
+                <h3 class="mb-5">All Orders</h3>
+                <p></p>
+                <OrderTable Orders="Orders" OnChange="OnOrderChangeAsync"></OrderTable>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .margin-right-15 {
+        margin-right: 15px !important;
+    }
+
+    .margin-left-15 {
+        margin-left: 15px !important;
+    }
+
+    .margin-top-15 {
+        margin-top: 15px !important;
+    }
+
+    .margin-bottom-15 {
+        margin-bottom: 15px !important;
+    }
+    .width-500 {
+        width: 500px !important;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    
+</style>
+

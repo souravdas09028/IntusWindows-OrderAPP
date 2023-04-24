@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>INTUS WINDOWS - Order</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_content/MatBlazor/dist/matBlazor.css" />
+    <script src="_content/MatBlazor/dist/matBlazor.js"></script>
+
+    <style>
+        .welcome-page {
+            background-color: white;
+            opacity: 0.7;
+            color: green;
+            height: 100vh;
+        }
+
+            .welcome-page h1 {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+        .mdc-dialog .mdc-dialog__container {
+            width: 90%;
+        }
+
+        .mdc-dialog .mdc-dialog__surface {
+            max-width: none;
+            width: 90%;
+        }
+
+        .dialog-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: none;
+            background-color: transparent;
+        }
+
+        .small-dialog {
+            max-width: 700px;
+        }
+
+        .large-dialog {
+            max-width: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="welcome-page">
+            <h1>Welcome to INTUS WINDOWS - Online Ordering System</h1>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

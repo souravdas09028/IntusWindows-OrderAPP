@@ -1,0 +1,47 @@
+﻿@using IntusWindows.Common;
+@inherits OrderDialogBase
+
+<MatDialog @bind-IsOpen="@OrderDialogueModel.IsOpen" CanBeClosed=false>
+    <MatDialogContent>
+        <EditForm Model="OrderDialogueModel.ModelDTO" OnValidSubmit="@OnSave">
+            <DataAnnotationsValidator />
+            <MatDialogTitle>@OrderDialogueModel.ActionType Order</MatDialogTitle>
+            <div class="margin-top-15" style="display: flex; justify-content: space-between;">
+                <p style="flex-basis : 30%">
+                    <label for="OrderDialogueModel.ModelDTO.State">Select your state</label>
+                    <select @bind="OrderDialogueModel.ModelDTO.State" class="form-control" style="width:200px;">
+                        @foreach (var state in States)
+                        {
+                            <option value="@state">@state</option>
+                        }
+                    </select>
+                </p>
+                <p style="flex-basis : 69%">
+                    <MatTextField @bind-Value="@OrderDialogueModel.ModelDTO.Name" Label="Name" FullWidth=false Style="width:500px;"></MatTextField>
+                    <ValidationMessage For="@(() => OrderDialogueModel.ModelDTO.Name)" />
+                </p>
+            </div>
+            <div class="mat-layout-grid-cell mat-layout-grid-cell-span-5">
+                @if (Windows == null)
+                {
+                    <h3>Loading windows...</h3>
+                }
+                else if (CurrentOrder == null)
+                {
+                    <h3>Please select an order first</h3>
+                }
+                else
+                {
+                    <p></p>
+                    <WindowTable Order="CurrentOrder" Windows="Windows" OnChange="OnWindowChangeAsync"></WindowTable>
+                    <ValidationMessage For="@(() => OrderDialogueModel.ModelDTO.Windows)" />
+                }
+            </div>
+
+        </EditForm>
+    </MatDialogContent>
+    <MatDialogActions Class="margin-right-15 margin-bottom-15">
+        <MatButton Type="submit" OnClick="@OnSave">Save</MatButton>&nbsp;
+        <MatButton OnClick="@OnCancel">Cancel</MatButton>
+    </MatDialogActions>
+</MatDialog>

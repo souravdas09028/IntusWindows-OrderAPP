@@ -1,0 +1,44 @@
+﻿@inherits WindowDialogBase
+
+<MatDialog @bind-IsOpen="@WindowDialogueModel.IsOpen" CanBeClosed=false>
+    <EditForm Model="WindowDialogueModel.ModelDTO" OnValidSubmit="@OnSave">
+        <DataAnnotationsValidator />
+        <MatDialogTitle>@WindowDialogueModel.ActionType Window</MatDialogTitle>
+        <MatDialogContent Class="width-600">
+            <div class="margin-top-15" style="display: flex; justify-content: space-between;">
+                <p style="flex-basis : 60%;">
+                    <MatTextField @bind-Value="@WindowDialogueModel.ModelDTO.Name" Label="Name" FullWidth=true></MatTextField>
+                    <ValidationMessage For="@(() => WindowDialogueModel.ModelDTO.Name)" />
+                </p>
+                <p style="flex-basis : 39%">
+                    <MatTextField @bind-Value="@WindowDialogueModel.ModelDTO.Quantity" Label="Quantity" FullWidth=true></MatTextField>
+                    <ValidationMessage For="@(() => WindowDialogueModel.ModelDTO.Quantity)" />
+                </p>
+            </div>
+            <div class="mat-layout-grid-cell mat-layout-grid-cell-span-10">   
+                @if (SubElements == null)
+                {
+                    <h3>Loading sub elements...</h3>
+                }
+                else if (CurrentWindow == null)
+                {
+                    <h3>Please select a window first</h3>
+                }
+                else
+                {
+                    <h3 class="mb-5">Sub elements of "@CurrentWindow.Name (@CurrentWindow.Quantity)"</h3>
+                    <SubElementTable Window="CurrentWindow"
+                                 SubElements="SubElements"
+                                 ElementTypes="ElementTypes"
+                                 OnChange="OnSubElementChangeAsync">
+                    </SubElementTable>
+                }
+            </div>
+        </MatDialogContent>
+        <MatDialogActions Class="margin-right-15 margin-bottom-15">
+            <MatButton Type="submit">Add</MatButton>&nbsp;
+            <MatButton OnClick="@OnCancel">Cancel</MatButton>
+        </MatDialogActions>
+    </EditForm>
+
+</MatDialog>

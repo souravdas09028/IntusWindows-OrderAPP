@@ -1,0 +1,40 @@
+﻿@inherits WindowTableBase
+
+<p>
+    <MatTextField @bind-Value="@WindowSearchText" Label="Search" Icon="search"></MatTextField>
+    <MatButton Outlined="true" OnClick="@OpenAddWindowDialogue" Icon="add" Style="color: darkblue" Class="float-right">Add</MatButton>
+</p>
+
+<p></p>
+
+<MatTable Items="@DisplayedWindows" AllowSelection="true"
+          Striped="true"
+          UseSortHeaderRow="true"
+          class="mat-elevation-z5">
+    <MatTableHeader>
+        <MatSortHeaderRow SortChanged="@SortData">
+            <MatSortHeader SortId="name"><div style="width: 300px;">Name</div></MatSortHeader>
+            <MatSortHeader SortId="quantity-of-windows">Quantity</MatSortHeader>
+            <MatSortHeader SortId="total-sub-elements"># Sub Elements</MatSortHeader>
+            <MatSortHeader SortId="action">Action</MatSortHeader>
+        </MatSortHeaderRow>
+    </MatTableHeader>
+    <MatTableRow>
+        <td>@context.Name</td>
+        <td>@context.Quantity</td>
+        <td>@context.NumberOfSubElements.GetValueOrDefault()</td>
+        <td>
+            <MatButton Outlined="true" Type="button" OnClick="@(_ => OpenEditWindowDialogue(@context))" Icon="edit" Style="color: darkorange">Edit</MatButton>
+            <MatButton Outlined="true" Type="button" OnClick="@(_ => OpenDeleteWindowPopupAsync(@context))" Icon="delete" Style="color: darkred">Delete</MatButton>
+        </td>
+    </MatTableRow>
+</MatTable>
+@if (!Windows.Any())
+{
+    <i>There are no windows available to display</i>
+}
+<p></p>
+
+<WindowDialog WindowDialogueModel="@WindowDialogueModel"
+              OnSave="@OnSaveAsync"
+              OnCancel="@OnCancel"></WindowDialog>
