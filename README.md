@@ -29,7 +29,8 @@ How to run the project
     Update-Database -Project IntusWindows.Core -StartupProject IntusWindows.API
     
     5.Set StartUp Projects : Multiple project -> IntusWindows.API and IntusWindows.Web
-    ![image](https://user-images.githubusercontent.com/59077852/234049181-1d9bbefb-2035-4c87-8337-9460b1eab639.png)
+  ![image](https://user-images.githubusercontent.com/59077852/234049821-def36cd5-f258-43d8-8437-89991b5ea67b.png)
+
     
     6.Run the project
 
