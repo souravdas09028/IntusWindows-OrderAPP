@@ -19,11 +19,17 @@ Tools and SDk
 
 How to run the project
 
-    Clone the repository from GitHub git clone https://github.com/souravdas09028/IntusWindows-OrderAPP.git
+    1.Clone the repository from GitHub git clone https://github.com/souravdas09028/IntusWindows-OrderAPP.git
 
-    Run the project in Visual Studio 2022
+    2.Run the project in Visual Studio 2022
 
-    Go to Package Manager Console
+    3.Go to Package Manager Console
 
-    Run this command in Package Manager Console.
+    4.Run this command in Package Manager Console.
     Update-Database -Project IntusWindows.Core -StartupProject IntusWindows.API
+    
+    5.Set StartUp Projects : Multiple project -> IntusWindows.API and IntusWindows.Web
+    ![image](https://user-images.githubusercontent.com/59077852/234049181-1d9bbefb-2035-4c87-8337-9460b1eab639.png)
+    
+    6.Run the project
+
