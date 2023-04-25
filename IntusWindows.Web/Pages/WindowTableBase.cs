@@ -127,6 +127,7 @@ namespace IntusWindows.Web.Pages
             if (deleteThis)
             {
                 var isDeleted = await WindowService.DeleteWindow(window);
+                Order.Windows.Remove(window);
 
                 await OnChange.InvokeAsync();
 

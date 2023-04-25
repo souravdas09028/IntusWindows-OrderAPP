@@ -1,6 +1,4 @@
-﻿@using IntusWindows.Common;
-@using IntusWindows.Web.Extentions;
-@inherits SubElementDialogBase
+﻿@inherits SubElementDialogBase
 
 <MatDialog @bind-IsOpen="@SubElementDialogueModel.IsOpen" CanBeClosed=false Class="dialog-container small-dialog">
     <EditForm Model="SubElementDialogueModel.ModelDTO" OnValidSubmit="@OnSave">

@@ -74,6 +74,5 @@ namespace IntusWindows.Web.Pages
                 Toaster.DataNotFound(dataModelType);
             }
         }
-
     }
 }

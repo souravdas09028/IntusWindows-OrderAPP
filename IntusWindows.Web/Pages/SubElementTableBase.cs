@@ -164,8 +164,8 @@ namespace IntusWindows.Web.Pages
             }
             else
             {
-                Window.SubElements.RemoveAll((x => x.ID == SubElementDialogueModel.ModelDTO.ID));
-                Window.SubElements.Add((SubElementDialogueModel.ModelDTO));
+                Window.SubElements.RemoveAll(x => x.ID == SubElementDialogueModel.ModelDTO.ID);
+                Window.SubElements.Add(SubElementDialogueModel.ModelDTO);
             }
 
             if (isSuccess)
@@ -194,6 +194,8 @@ namespace IntusWindows.Web.Pages
             if (deleteThis)
             {
                 var isDeleted = await SubElementService.DeleteSubElement(subElementDTO);
+
+                Window.SubElements.Remove(subElementDTO);
 
                 await OnChange.InvokeAsync();
 
